@@ -1,0 +1,42 @@
+local UILibrary = loadstring(game:HttpGet("https://pastebin.com/raw/V1ca2q9s"))()
+
+local MainUI = UILibrary.Load("Egg Packing Tycoon")
+local FirstPage = MainUI.AddPage("Home")
+
+local FirstLabel = FirstPage.AddLabel("Main options")
+local FirstButton = FirstPage.AddButton("Auto Add Eggs To Machine", function()
+while wait(5) do
+local AutoAdd = "AddToMachine"
+
+game:GetService("ReplicatedStorage").RemoteEvents.ProximityPromptEvent:FireServer(AutoAdd)
+end
+end)
+local SecondButton = FirstPage.AddButton("Auto Collect Eggs", function()
+local ids = {
+   "5119B14D-11FD-4690-A738-137FB38E19A0",
+   "28E146E5-16EB-4D75-A647-299BC1E8F19C",
+   "2360F2CD-9EAA-4C20-9229-BA399F4C18FF",
+   "8D9B0E6D-79E4-438B-9BD7-715668DEF111",
+   "F3068E39-3FFF-4100-9EBE-22EFE2DCD87B",
+   "DC980C1A-5AE7-4E0A-969D-1264343921E3",
+   "2B59027C-1CDF-418B-99E7-9C7826C22255",
+   "874516B9-3DA7-414A-AB01-FEFB3B258380",
+   "722BD015-9AED-480A-B05C-762ED28871E6",
+   "D0856401-1840-4858-826D-6BCD1A48D2E3"
+}
+_G.farmshit = true
+while _G.farmshit do
+  wait()
+  for i,v in next,ids do
+      wait()
+      game:GetService("ReplicatedStorage").RemoteEvents.EggEvent:FireServer({[v] = 100})
+  end
+end
+end)
+local ThirdButton = FirstPage.AddButton("Stop Egg Overflow Lag", function()
+game.Workspace._EggFolder:Destroy()
+end)
+local SecondPage = MainUI.AddPage("Credits")
+local FirstLabel = SecondPage.AddLabel("Credits")
+local SecondLabel = SecondPage.AddLabel("African Man#3025 (Other Functions)")
+local ThirdLabel = SecondPage.AddLabel("ImPanda (Auto Egg Collect)")
